@@ -1,0 +1,61 @@
+generated: '2026-08-05'
+method: searched
+probe: true
+source: https://trust.truveta.com/
+url: https://trust.truveta.com/
+platform: SafeBase
+certifications:
+- HITRUST R2
+- ISO/IEC 27001
+- ISO/IEC 27018:2019
+- ISO/IEC 27701
+- SOC 2 Type 2
+certification_detail:
+- name: HITRUST R2
+  artifact: HITRUST R2 Certification report
+  access: on request
+- name: ISO/IEC 27001
+  artifact: ISO Certificate
+  access: on request
+- name: ISO/IEC 27018:2019
+  access: on request
+- name: ISO/IEC 27701
+  access: on request
+- name: SOC 2 Type 2
+  artifact: SOC 2 Type 2 Attestation Report
+  period: '2025-02-01 to 2026-01-31'
+  access: on request
+documents:
+- HITRUST R2 Certification report
+- ISO Certificate
+- SOC 2 Type 2 Attestation Report
+- Truveta Accessibility Conformance Report
+- Truveta Data Dictionary
+- Information Security Policy
+- Truveta Sustainability Report (ESG)
+not_published:
+- subprocessor list
+- security contact email
+- vulnerability disclosure / responsible disclosure policy
+notes:
+- >-
+  Documents are gated behind a SafeBase access request; the certification names,
+  the SOC 2 Type 2 audit window and the document list are visible anonymously.
+- >-
+  No RFC 9116 security.txt is served (404 at both /.well-known/security.txt and
+  /security.txt on www.truveta.com), and no disclosure-policy page was found, so
+  no VulnerabilityDisclosure or Security pointer is emitted for this repo.
+evidence:
+- source: https://trust.truveta.com/
+  http_status: 200
+  keywords:
+  - hitrust
+  - soc 2 type 2
+  - iso/iec 27001
+  - iso/iec 27018
+  - iso/iec 27701
+  - trust center
+x-evidence:
+  fetched: '2026-08-05'
+  url: https://trust.truveta.com/
+  http_status: 200

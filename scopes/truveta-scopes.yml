@@ -1,0 +1,71 @@
+generated: '2026-08-05'
+method: searched
+source: https://login.truveta.com/.well-known/openid-configuration
+description: >-
+  Truveta publishes no OpenAPI and no product-level permission or scope
+  reference. The scopes below are the ones its Auth0 identity tenant advertises
+  in `scopes_supported` on the anonymous OIDC discovery document — standard
+  OpenID Connect and Auth0 scopes governing identity and profile claims for the
+  Truveta Studio application. They are NOT Truveta product/data scopes; no such
+  reference is published publicly.
+scheme_type: openIdConnect
+schemes:
+  - name: TruvetaOIDC
+    source: well-known/truveta-openid-configuration.json
+    issuer: https://login.truveta.com/
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://login.truveta.com/authorize
+        tokenUrl: https://login.truveta.com/oauth/token
+      - flow: clientCredentials
+        tokenUrl: https://login.truveta.com/oauth/token
+      - flow: deviceCode
+        deviceAuthorizationUrl: https://login.truveta.com/oauth/device/code
+        tokenUrl: https://login.truveta.com/oauth/token
+scopes:
+  - scope: openid
+    description: Request an ID token and authenticate the end user via OpenID Connect.
+    standard: oidc-core
+  - scope: profile
+    description: Basic profile claims (name, given_name, family_name, nickname, picture).
+    standard: oidc-core
+  - scope: email
+    description: The end user's email address.
+    standard: oidc-core
+  - scope: email_verified
+    description: Whether the end user's email address has been verified.
+    standard: auth0
+  - scope: address
+    description: The end user's postal address claim.
+    standard: oidc-core
+  - scope: phone
+    description: The end user's phone number claim.
+    standard: oidc-core
+  - scope: offline_access
+    description: Issue a refresh token for long-lived access without re-authentication.
+    standard: oidc-core
+  - scope: name
+    description: Full name claim.
+    standard: auth0
+  - scope: given_name
+    description: Given name claim.
+    standard: auth0
+  - scope: family_name
+    description: Family name claim.
+    standard: auth0
+  - scope: nickname
+    description: Nickname claim.
+    standard: auth0
+  - scope: picture
+    description: Profile picture URL claim.
+    standard: auth0
+  - scope: created_at
+    description: Timestamp the user account was created in the Auth0 tenant.
+    standard: auth0
+  - scope: identities
+    description: Linked identity-provider identities for the user account.
+    standard: auth0
+x-evidence:
+  fetched: '2026-08-05'
+  url: https://login.truveta.com/.well-known/openid-configuration
+  http_status: 200

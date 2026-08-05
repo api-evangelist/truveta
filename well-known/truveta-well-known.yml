@@ -1,0 +1,116 @@
+generated: '2026-08-05'
+method: searched
+source: https://login.truveta.com/.well-known/openid-configuration
+description: >-
+  Truveta publishes no developer or API host. The only genuine /.well-known/
+  documents reachable on a Truveta-controlled host are the OpenID Connect /
+  OAuth 2.0 discovery documents served by its Auth0 identity tenant at
+  login.truveta.com, which fronts the authenticated Truveta Studio application.
+hosts:
+  - host: https://login.truveta.com
+    role: identity-provider
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        content_type: application/json
+        file: truveta-openid-configuration.json
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        note: >-
+          Byte-identical to /.well-known/openid-configuration; not saved twice.
+      - path: /.well-known/jwks.json
+        status: 200
+        note: JWKS referenced by jwks_uri; not mirrored here.
+  - host: https://www.truveta.com
+    role: marketing-site
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 301
+        note: Redirects to the site homepage; no RFC 9727 catalog is served.
+      - path: /llms.txt
+        status: 200
+        content_type: text/plain
+        note: Saved to llms/truveta-llms.txt (see the LLMsTxt pointer).
+  - host: https://api.truveta.com
+    role: api-gateway
+    gateway: Kong
+    x-soft-404: true
+    note: >-
+      REJECTED AS EVIDENCE. api.truveta.com answers every /.well-known/* path
+      with HTTP 200 and the same Truveta Studio single-page-application HTML
+      shell — including a deliberately nonsensical control path — so none of
+      those 200s is a published document. Verified 2026-08-05 by diffing bodies.
+    x-gateway-probe:
+      note: >-
+        Non-/.well-known/ paths fall through to a Kong API gateway, which
+        returns its signature body {"message":"no Route matched with those
+        values"} with a request_id. A real API tier exists here, but no route
+        is exposed anonymously; the response is byte-shaped identically for a
+        control path, so nothing can be inferred about the routes behind it.
+      paths_probed:
+        - {path: /openapi.json, status: 404}
+        - {path: /openapi.yaml, status: 404}
+        - {path: /swagger.json, status: 404}
+        - {path: /swagger/v1/swagger.json, status: 404}
+        - {path: /v1/openapi.json, status: 404}
+        - {path: /api-docs, status: 404}
+        - {path: /redoc, status: 404}
+        - {path: /docs, status: 404}
+        - {path: /graphql, status: 404}
+        - {path: /health, status: 404}
+        - {path: /v1, status: 404}
+        - {path: /api/v1, status: 404}
+        - {path: /nonsense-control-xyz123, status: 404, control: true}
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        content_type: text/html
+        served: spa-shell
+        valid: false
+      - path: /.well-known/openid-configuration
+        status: 200
+        content_type: text/html
+        served: spa-shell
+        valid: false
+      - path: /.well-known/agent-card.json
+        status: 200
+        content_type: text/html
+        served: spa-shell
+        valid: false
+      - path: /.well-known/api-catalog
+        status: 200
+        content_type: text/html
+        served: spa-shell
+        valid: false
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        content_type: text/html
+        served: spa-shell
+        valid: false
+      - path: /.well-known/this-is-a-control-path-xyz123
+        status: 200
+        content_type: text/html
+        served: spa-shell
+        valid: false
+        note: Control path. Identical body proves the 200s above are meaningless.
+  - host: https://trust.truveta.com
+    role: trust-center
+    vendor: SafeBase
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        content_type: application/json
+        valid: false
+        note: >-
+          Served by the SafeBase trust-center platform, not by Truveta. Its
+          issuer is https://app.safebase.io/api/mcp — a SafeBase vendor MCP
+          surface. NOT recorded as a Truveta MCP server or a Truveta identity
+          surface.
+x-evidence:
+  fetched: '2026-08-05'
+  method: HTTP GET, anonymous, no credentials

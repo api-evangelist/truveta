@@ -1,0 +1,76 @@
+generated: '2026-08-05'
+method: searched
+source: https://github.com/TruvetaPublic/OpenLinkToken
+docs: https://truvetapublic.github.io/OpenLinkToken/running-openlinktoken/
+description: >-
+  `olt` is Truveta's first-party command-line tool for Open Link Token,
+  a privacy-preserving record-linkage toolkit. It generates deterministic,
+  cryptographically secure tokens from person attributes so two parties can
+  match records without exchanging raw identifiers. It is NOT a client for a
+  Truveta API — Truveta publishes no public API — it is a local data-processing
+  CLI shipped as a self-contained binary.
+name: olt
+repository: https://github.com/TruvetaPublic/OpenLinkToken
+license_file: https://github.com/TruvetaPublic/OpenLinkToken/blob/main/LICENSE
+version: 2.1.0
+install:
+  - method: binary
+    platform: linux-x86_64
+    asset: olt-vX.Y.Z-linux-x86_64
+    steps: chmod +x olt-v*-linux-x86_64 && mv olt-v*-linux-x86_64 olt
+    checksum: matching .sha256 asset published per binary
+  - method: binary
+    platform: macos-universal
+    asset: olt-vX.Y.Z-macos-universal
+    steps: >-
+      chmod +x olt-v*-macos-universal && xattr -d com.apple.quarantine
+      olt-v*-macos-universal && mv olt-v*-macos-universal olt
+    checksum: matching .sha256 asset published per binary
+  - method: binary
+    platform: windows-x86_64
+    asset: olt-vX.Y.Z-windows-x86_64.exe
+    checksum: matching .sha256 asset published per binary
+  - method: zip
+    asset: olt-cli-X.Y.Z-{linux-x64,macos-universal,windows-x64}.zip
+  - method: docker
+    steps: './run-olt.sh <command>  (Linux/macOS)   |   .\run-olt.ps1 <command>  (Windows)'
+    note: Convenience wrappers committed at the repository root.
+commands:
+  - command: generate-key-pair
+    description: >-
+      Generate an RSA key pair for the exchange. Writes to ~/.openlinktoken/.
+    flags: ['--name <name>']
+  - command: initiate-exchange
+    description: >-
+      Create the exchange configuration using the recipient's public key, so
+      tokens can be encrypted for a specific counterparty.
+    flags: ['--public-key <path to *.public.pem>']
+  - command: package
+    description: >-
+      Tokenize an input CSV of person records and package the encrypted result
+      for exchange with the counterparty.
+    flags: ['-i <input.csv>', '-o <output.zip>', '--exchange-config <path>']
+  - command: tokenize
+    description: Generate matching tokens (rules T1–T5) from person attributes.
+  - command: encrypt
+    description: Encrypt tokens for the recipient.
+  - command: decrypt
+    description: Decrypt a received token package.
+  - command: help
+    description: Show usage.
+flows:
+  - name: two-party private record linkage
+    steps:
+      - Recipient runs `generate-key-pair` and shares the public PEM.
+      - Sender runs `initiate-exchange --public-key <recipient.public.pem>`.
+      - Sender runs `package -i records.csv -o output.zip --exchange-config <path>`.
+      - Recipient runs `decrypt` and compares token signatures to find overlaps.
+    note: >-
+      Crypto pipeline documented as SHA-256 -> HMAC-SHA256 -> AES-256, with a
+      hash-only mode available.
+x-evidence:
+  fetched: '2026-08-05'
+  urls:
+    - {url: 'https://raw.githubusercontent.com/TruvetaPublic/OpenLinkToken/main/README.md', status: 200}
+    - {url: 'https://truvetapublic.github.io/OpenLinkToken/running-openlinktoken/', status: 200}
+    - {url: 'https://api.github.com/repos/TruvetaPublic/OpenLinkToken/releases', status: 200}

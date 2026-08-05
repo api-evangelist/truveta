@@ -1,0 +1,89 @@
+generated: '2026-08-05'
+method: searched
+source: https://pypi.org/project/openlinktoken/
+description: >-
+  Truveta ships no API client SDK, because it publishes no public API. It does
+  publish one genuine first-party open-source library — Open Link Token (OLT),
+  a privacy-preserving record-linkage toolkit — in Python, Java and PySpark
+  form, plus a self-contained CLI binary. These are data-processing libraries,
+  NOT clients for a Truveta API, and are catalogued as such. No `SDKs` pointer
+  is emitted for this repo: crediting Truveta with an API SDK it does not ship
+  would be false.
+packages:
+  - language: python
+    registry: pypi
+    name: openlinktoken
+    version: 2.1.0
+    url: https://pypi.org/project/openlinktoken/
+    install: pip install openlinktoken
+    official: true
+    kind: library
+    api_client: false
+    repo: https://github.com/TruvetaPublic/OpenLinkToken
+  - language: python
+    registry: pypi
+    name: openlinktoken-pyspark
+    url: https://pypi.org/project/openlinktoken-pyspark/
+    install: pip install openlinktoken-pyspark
+    official: true
+    kind: library
+    api_client: false
+    note: PySpark distribution of the same tokenization library.
+    repo: https://github.com/TruvetaPublic/OpenLinkToken
+  - language: java
+    registry: github-releases
+    name: openlinktoken
+    version: 2.1.0
+    url: https://github.com/TruvetaPublic/OpenLinkToken/releases
+    install: >-
+      Download openlinktoken-2.1.0.jar and openlinktoken-2.1.0.pom from the
+      GitHub release assets.
+    official: true
+    kind: library
+    api_client: false
+    note: >-
+      Not published to Maven Central — a search for both `truveta` and
+      `openlinktoken` on search.maven.org returned 0 artifacts on 2026-08-05.
+      The JAR and POM are distributed only as GitHub release assets.
+  - language: binary
+    registry: github-releases
+    name: olt
+    version: 2.1.0
+    url: https://github.com/TruvetaPublic/OpenLinkToken/releases
+    install: >-
+      Download olt-vX.Y.Z-linux-x86_64 / -macos-universal / -windows-x86_64.exe
+      and verify the matching .sha256.
+    official: true
+    kind: cli
+    api_client: false
+    platforms: [linux-x86_64, macos-universal, windows-x86_64]
+    note: See cli/truveta-cli.yml for the command surface.
+not_official:
+  - registry: pypi
+    name: truveta
+    url: https://pypi.org/project/truveta/
+    reason: >-
+      Version 0.0.1.dev0, author "MLDev2000", no homepage, no repository, no
+      content. A name placeholder, not a Truveta release. Explicitly NOT counted.
+  - registry: pypi
+    name: opentoken
+    url: https://pypi.org/project/opentoken/
+    reason: >-
+      Published by Jason Yoon from github.com/yoonjesung/opentoken-python — a
+      third-party project, unrelated to Truveta's archived OpenToken repo.
+  - registry: npm
+    name: opentoken
+    reason: Unrelated third-party package; no Truveta npm packages exist.
+registries_checked:
+  - {registry: pypi, result: 'openlinktoken + openlinktoken-pyspark (official); truveta + opentoken (not first-party)'}
+  - {registry: npm, result: 'no first-party Truveta packages (truveta 404, @truveta/sdk 404)'}
+  - {registry: maven-central, result: '0 artifacts for truveta or openlinktoken'}
+  - {registry: github-releases, result: 'JAR, POM, wheels and CLI binaries under TruvetaPublic/OpenLinkToken'}
+x-evidence:
+  fetched: '2026-08-05'
+  urls:
+    - {url: 'https://pypi.org/pypi/openlinktoken/json', status: 200}
+    - {url: 'https://pypi.org/pypi/openlinktoken-pyspark/json', status: 200}
+    - {url: 'https://api.github.com/repos/TruvetaPublic/OpenLinkToken/releases', status: 200}
+    - {url: 'https://search.maven.org/solrsearch/select?q=truveta', status: 200}
+    - {url: 'https://registry.npmjs.org/truveta', status: 404}
