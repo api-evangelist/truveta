@@ -1,0 +1,14 @@
+{
+  "repo": "truveta",
+  "feeds": [
+    {
+      "source": "https://www.truveta.com/",
+      "feed_url": "https://www.truveta.com/feed/",
+      "title": "",
+      "saved": 3,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 3,
+  "fetched": "2026-08-06T14:08:46Z"
+}
