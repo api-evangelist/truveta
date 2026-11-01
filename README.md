@@ -64,5 +64,92 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Truveta is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/truveta_stock/
+Truveta is a health-system-led data and analytics company founded in 2020 and headquartered in Bellevue, Washington, jointly owned by 30 US health systems. It aggregates daily-updated, de-identified electronic health record data covering more than 120 million US patients, links it with claims, mortality and genomic data, and delivers it as regulatory-grade real-world evidence through Truveta Data and Truveta Studio, a HIPAA-compliant analytics workspace combining serverless SQL with Jupyter notebooks in R and Python. The Truveta Language Model normalizes unstructured clinical text into research-ready concepts, and the Truveta Genome Project links de-identified genetic data to the same longitudinal records. Truveta publishes no public API, developer portal or machine-readable specification: Truveta Studio is reachable only through an authenticated customer tenant at studio.truveta.com.
+
+**Areas:** Company · Healthcare · Health Data · Electronic Health Records · Real-World Evidence · Clinical Research · Life Sciences · Genomics · Analytics · Artificial Intelligence · Data Platform
+
+## Truveta on APIs.io
+
+Everything profiled for Truveta is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/truveta/](https://apis.io/providers/truveta/)** — or go straight to one of the APIs or properties below.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Truveta Authentication](https://apis.io/security/truveta/truveta-authentication/)
+- [Truveta Domain Security](https://apis.io/security/truveta/truveta-domain-security/)
+- [Truveta Trust Center](https://apis.io/security/truveta/truveta-trust-center/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Truveta Scopes](https://apis.io/scopes/truveta/truveta-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.truveta.com/)
+- [Support](https://www.truveta.com/contact-us/)
+- [Blog](https://www.truveta.com/blog/)
+- [Compliance](https://trust.truveta.com/)
+- [Privacy policy](https://www.truveta.com/privacy-notice/)
+- [GitHub](https://github.com/TruvetaPublic)
+
+## API Evangelist rating
+
+**Kin Score 20.8** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 55.4 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 22.6 |
+| Access clarity | 27.6 |
+
+**Agent readiness 15.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+
+**Regulatory alignment 30.1** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/truveta/](https://apis.io/providers/truveta/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Truveta: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/truveta/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
